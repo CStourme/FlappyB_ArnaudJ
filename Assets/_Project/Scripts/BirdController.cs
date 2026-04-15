@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -35,5 +36,15 @@ public class BirdController : MonoBehaviour
         {
             _rigidbody2D.AddForceY(jumpForce, ForceMode2D.Impulse);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        m_manager.GameOver();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        m_manager.AddPoint();
     }
 }

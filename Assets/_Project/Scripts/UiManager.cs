@@ -6,7 +6,11 @@ public class UiManager : MonoBehaviour
 
     public void DisplayGameOverMenu()
     {
-        Debug.Log("Game Over Menu");
         _gameOverMenu.SetActive(true);
+    }
+
+    public void DisplayScore(int score)
+    {
+        Debug.Log("Score: " + score);
     }
 }

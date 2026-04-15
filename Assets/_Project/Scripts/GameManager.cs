@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     [Header("Managers References"), Space(10)]
     [SerializeField] private UiManager _uiManager;
     
+    [Header("Gameplay Data")]
+    [SerializeField ]private int _score;
+    
     private enum STATE
     {
         Playing,
@@ -20,22 +23,20 @@ public class GameManager : MonoBehaviour
     
     private STATE _state = STATE.Playing;
     
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _bird = Instantiate(_playerPrefab, _playerSpawnPosition.position, Quaternion.identity);
         _bird.GetComponent<BirdController>().m_manager =this;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     public void GameOver()
     {
         _uiManager.DisplayGameOverMenu();
+    }
+
+    public void AddPoint()
+    {
+        _score++;
+        _uiManager.DisplayScore(_score);
     }
 }
