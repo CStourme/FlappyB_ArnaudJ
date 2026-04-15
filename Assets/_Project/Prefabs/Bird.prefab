@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4399773342554046552}
   - component: {fileID: -9034122561213687521}
   - component: {fileID: 2519468139707645544}
+  - component: {fileID: 4643938400665779110}
   m_Layer: 0
   m_Name: Bird
   m_TagString: Untagged
@@ -108,6 +109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MyFirstScript
   jumpForce: 8
+  m_manager: {fileID: 0}
+  isDead: 0
 --- !u!50 &4399773342554046552
 Rigidbody2D:
   serializedVersion: 5
@@ -268,3 +271,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &4643938400665779110
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68305769957194485}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0178cc68758eef94f80c481571f0da04, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
