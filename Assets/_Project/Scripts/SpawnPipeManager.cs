@@ -4,7 +4,7 @@ using UnityEngine;
 public class SpawnPipeManager : MonoBehaviour
 {
     [Header("Pipe Spawn Settings"), Space(10)] 
-    [SerializeField] private float _repeatRate = 4f; // Temps moyen
+    [SerializeField] private float _repeatRate = 5f; // Temps moyen
     [SerializeField, Range(0f, 4f)] private float _variation = 2f; // Hasard (+ ou -)
     [Header("Pipe Spawn Y Position")] 
     [SerializeField, Range(-4f, 4f)] private float _Up = 3f;
@@ -13,6 +13,8 @@ public class SpawnPipeManager : MonoBehaviour
 
     void Start()
     {
+        // On établit une connexion avec le script "PipePool" qui est attaché au même objet.
+        // Récupère la référence du composant de type PipePool sur cet objet et la stocke dans la variable _pipePool.
         _pipePool = GetComponent<PipePool>();
         // On lance le tout premier appel immédiatement
         SpawnPipe();
@@ -31,12 +33,12 @@ public class SpawnPipeManager : MonoBehaviour
         }
 
         // 2. On calcule un délai aléatoire pour préparer le coup d'après (Le relais)
-        float prochainDelai = _repeatRate + Random.Range(-_variation, _variation);
+        float delay = _repeatRate + Random.Range(-_variation, _variation);
         // Sécurité : on s'assure que le délai n'est pas négatif ou trop court
-        if (prochainDelai < 0.5f) prochainDelai = 0.5f;
+        if (delay < 0.5f) delay = 0.5f;
 
         // 3. On programme l'exécution suivante
-        Invoke("SpawnPipe", prochainDelai);
+        Invoke("SpawnPipe", delay);
     }
 
     public void StopSpawning()

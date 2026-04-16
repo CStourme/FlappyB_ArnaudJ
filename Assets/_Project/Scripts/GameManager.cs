@@ -34,9 +34,9 @@ public class GameManager : MonoBehaviour
         _uiManager.DisplayGameOverMenu();
     }
 
-    public void AddPoint()
-    {
-        _score++;
-        _uiManager.DisplayScore(_score);
-    }
+    // public void AddPoint()
+    // {
+    //     _score++;
+    //     _uiManager.DisplayScore(_score);
+    // }
 }

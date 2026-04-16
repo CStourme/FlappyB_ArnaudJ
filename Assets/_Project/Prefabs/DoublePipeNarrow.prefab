@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 2271984020379324697}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -8.09, z: 0}
+  m_LocalPosition: {x: 0, y: -6.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -116,7 +116,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1336162156, guid: 6fb4c976eb043ed41b5fcf9f92f1ba41, type: 3}
+  m_Sprite: {fileID: 2076779671, guid: 6fb4c976eb043ed41b5fcf9f92f1ba41, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -197,7 +197,7 @@ Transform:
   m_GameObject: {fileID: 3945643898525581744}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 6, z: 0}
+  m_LocalPosition: {x: 0, y: 4.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -217,8 +217,8 @@ GameObject:
   - component: {fileID: 1228120874315595205}
   - component: {fileID: 3357448865946644701}
   m_Layer: 0
-  m_Name: DoublePipe
-  m_TagString: Untagged
+  m_Name: DoublePipeNarrow
+  m_TagString: PassTroughDouble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -232,7 +232,7 @@ Transform:
   m_GameObject: {fileID: 4086469711335727555}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.38, y: 4.16, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -336,7 +336,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -1969497438595790671, guid: 6fb4c976eb043ed41b5fcf9f92f1ba41, type: 3}
+  m_Sprite: {fileID: 241473562, guid: 6fb4c976eb043ed41b5fcf9f92f1ba41, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -474,7 +474,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1700322421, guid: 6fb4c976eb043ed41b5fcf9f92f1ba41, type: 3}
+  m_Sprite: {fileID: -423787923, guid: 6fb4c976eb043ed41b5fcf9f92f1ba41, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -540,9 +540,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5978242309820785882}
   - component: {fileID: 7085044639900155844}
+  - component: {fileID: 5953600821325614947}
   m_Layer: 0
   m_Name: PointTrigger
-  m_TagString: Untagged
+  m_TagString: PassTroughDoubleN
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -606,8 +607,20 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.5, y: 6.36}
+  m_Size: {x: 0.5, y: 3}
   m_EdgeRadius: 0
+--- !u!114 &5953600821325614947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7074394442944592874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46112f4187ee7484da0a78c63f369a4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreZone
 --- !u!1 &7178901547740744361
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,7 +703,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1700322421, guid: 6fb4c976eb043ed41b5fcf9f92f1ba41, type: 3}
+  m_Sprite: {fileID: -423787923, guid: 6fb4c976eb043ed41b5fcf9f92f1ba41, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -828,7 +841,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -1969497438595790671, guid: 6fb4c976eb043ed41b5fcf9f92f1ba41, type: 3}
+  m_Sprite: {fileID: 241473562, guid: 6fb4c976eb043ed41b5fcf9f92f1ba41, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -966,7 +979,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1336162156, guid: 6fb4c976eb043ed41b5fcf9f92f1ba41, type: 3}
+  m_Sprite: {fileID: 2076779671, guid: 6fb4c976eb043ed41b5fcf9f92f1ba41, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
