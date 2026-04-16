@@ -83,9 +83,4 @@ public class BirdController : MonoBehaviour
     {
         m_manager.GameOver();
     }
-
-    // private void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     m_manager.AddPoint();
-    // }
 }

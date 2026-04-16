@@ -6,7 +6,10 @@ public class GameManager : MonoBehaviour
     [Header("Player References"), Space(10)] 
     [SerializeField, Tooltip("The player object you must instantiate at start.")] private GameObject _playerPrefab;
     [SerializeField,Tooltip("The position of the player at start.")] private Transform _playerSpawnPosition;
+    
+    [SerializeField, Tooltip("The Background object you must instantiate at start.")] private GameObject _backgroundPrefab;
     private GameObject _bird;
+    private GameObject _background;
     
     [Header("Managers References"), Space(10)]
     [SerializeField] private UiManager _uiManager;
@@ -25,6 +28,7 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
+        _background = Instantiate(_backgroundPrefab);
         _bird = Instantiate(_playerPrefab, _playerSpawnPosition.position, Quaternion.identity);
         _bird.GetComponent<BirdController>().m_manager =this;
     }
@@ -33,10 +37,4 @@ public class GameManager : MonoBehaviour
     {
         _uiManager.DisplayGameOverMenu();
     }
-
-    // public void AddPoint()
-    // {
-    //     _score++;
-    //     _uiManager.DisplayScore(_score);
-    // }
 }

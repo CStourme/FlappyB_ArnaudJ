@@ -24,6 +24,13 @@ public class ScoreManager : MonoBehaviour
         score+=2;
         UpdateScore();
     }
+    
+    public void AddTriplePoint()
+    {
+        // J'ajoute 3 points
+        score+=3;
+        UpdateScore();
+    }
 
     void UpdateScore()
     {

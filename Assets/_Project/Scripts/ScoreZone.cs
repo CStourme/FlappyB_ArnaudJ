@@ -20,16 +20,22 @@ public class ScoreZone : MonoBehaviour
         {
             // --- CAS POUR 1 POINT ---
             case "PassTroughUp":
+                _scoreManager.AddSinglePoint();
+                Debug.Log("Point Simple (+1)");
+                break;
             case "PassTroughDown":
                 _scoreManager.AddSinglePoint();
                 Debug.Log("Point Simple (+1)");
                 break;
 
             // --- CAS POUR 2 POINTS (Tes nouveaux tags) ---
-            case "PassTroughDoubleN":
             case "PassTroughDoubleL":
                 _scoreManager.AddDoublePoint();
                 Debug.Log("Point Double (+2) via : " + gameObject.tag);
+                break;
+            case "PassTroughDoubleN":
+                _scoreManager.AddTriplePoint();
+                Debug.Log("Point Triple (+3) via : " + gameObject.tag);
                 break;
         }
     }

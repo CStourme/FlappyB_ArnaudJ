@@ -185,8 +185,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279900698
-  m_fontColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -904,6 +904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   _playerPrefab: {fileID: 68305769957194485, guid: f2caa8e2d71e8194ca02d9e26fb16d60, type: 3}
   _playerSpawnPosition: {fileID: 444702671}
+  _backgroundPrefab: {fileID: 6471792934362935419, guid: 976e5cce04faa9243aa2564abfc843b5, type: 3}
   _uiManager: {fileID: 383314643}
   _score: 0
 --- !u!114 &853245874
