@@ -1682,9 +1682,11 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9522ec223af46604492db6f4cfce3761, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
-  _pipePrefab: {fileID: 4086469711335727555, guid: 56169e7c399bc394da1cb75c19b631bf, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnPipeManager
   _repeatRate: 2
+  _variation: 1
+  _Up: 3
+  _Down: -3
 --- !u!114 &1999917655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1697,7 +1699,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba0f88ef6a2bf6542bc139e10261fde9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _pipePrefab: {fileID: 4086469711335727555, guid: 56169e7c399bc394da1cb75c19b631bf, type: 3}
+  _pipePrefabs:
+  - {fileID: 4086469711335727555, guid: 56169e7c399bc394da1cb75c19b631bf, type: 3}
+  - {fileID: 4086469711335727555, guid: 5a1636adcd213124ea5809ce6eff0a92, type: 3}
+  - {fileID: 4086469711335727555, guid: a591af5754b044944b10c4bc9835a607, type: 3}
   _poolCapacity: 10
 --- !u!1 &2023871669
 GameObject:
