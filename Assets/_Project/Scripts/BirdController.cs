@@ -9,8 +9,11 @@ public class BirdController : MonoBehaviour
     [Header("Bird Settings"), Space(10)]
     public float jumpForce = 0;
     private Camera _camera;
+    
+    // Référence au script "GameManager" qui gère les règles globales du jeu.
+    // [HideInInspector] signifie qu'on ne le voit pas dans l'Unity Inspector, car il sera modifié par un autre script.
     [HideInInspector] public GameManager m_manager;
-    [SerializeField]private bool isDead;
+    [SerializeField] private bool isDead;
     
     // Création d'une variable pour stocker l'état actuel
     public enum GameState { Playing, GameOver }
@@ -35,9 +38,12 @@ public class BirdController : MonoBehaviour
             // Si j'appuie sur barre d'espace, le joueur saute.
             HandleInput();
 
+            // On vérifie si la hauteur de l'oiseau dépasse la limite haute ou basse de la caméra.
             if (Mathf.Abs(transform.position.y) > _camera.orthographicSize)
             {
+                // Si l'oiseau sort de l'écran (trop haut ou trop bas), on déclenche la fin de partie.
                 TriggerGameOver();
+                // On arrête immédiatement la fonction Update pour ne pas exécuter le reste du code.
                 return;
             }
 
@@ -66,25 +72,31 @@ public class BirdController : MonoBehaviour
     // Pour éviter de répéter le code de mort, on crée une fonction
     private void TriggerGameOver()
     {
-        if (currentState == GameState.GameOver) return; // Évite de mourir deux fois
-    
+        // Pour ne pas mourir deux fois
+        if (currentState == GameState.GameOver) return;
+        // Change l'état de current state à "GameOver"
         currentState = GameState.GameOver;
+        
+        // On prévient le manager que la partie est finie. 
+        // C'est lui qui décidera d'afficher l'écran de Game Over ou de couper le son.
         m_manager.GameOver();
     }
 
     private void HandleInput()
     {
+        // Si on clique sur spaceKey :
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             // On applique la force de saut
             _rigidbody2D.AddForceY(jumpForce, ForceMode2D.Impulse);
-            // On déclenche l'animation via le Trigger "FlyTrigger"
+            // On déclenche l'animation via le trigger : "FlyTrigger"
             _animator.SetTrigger("FlyTrigger");
         }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        // Dès qu'on touche un obstacle, on délègue la gestion de la fin de partie au manager.
         m_manager.GameOver();
     }
 }
