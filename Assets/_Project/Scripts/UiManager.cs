@@ -6,6 +6,7 @@ public class UiManager : MonoBehaviour
 
     public void DisplayGameOverMenu()
     {
+        _gameOverMenu = Instantiate(_gameOverMenu);
         _gameOverMenu.SetActive(true);
     }
 

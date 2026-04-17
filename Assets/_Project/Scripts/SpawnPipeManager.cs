@@ -10,6 +10,7 @@ public class SpawnPipeManager : MonoBehaviour
     [SerializeField, Range(-4f, 4f)] private float _Up = 3f;
     [SerializeField, Range(-4f, 4f)] private float _Down = -3f;
     private PipePool _pipePool;
+    [SerializeField] private float _currentSpeed =5;
 
     void Start()
     {
@@ -30,6 +31,7 @@ public class SpawnPipeManager : MonoBehaviour
         {
             availablePipe.transform.position = spawnPosition;
             availablePipe.SetActive(true);
+            availablePipe.GetComponent<SimpleMove>().SetManager(this);
         }
 
         // 2. On calcule un délai aléatoire pour préparer le coup d'après (Le relais)
@@ -45,5 +47,21 @@ public class SpawnPipeManager : MonoBehaviour
     {
         // Si on veut arrêter, on annule tous les Invokes en cours
         CancelInvoke("SpawnPipe");
+    }
+
+    public float GetCurrentSpeed()
+    {
+        return _currentSpeed;
+    }
+
+    public void SetCurrentSpeed(float newSpeed)
+    {
+        _currentSpeed = newSpeed;
+        Invoke(nameof(ResetSpeed), .5f);
+    }
+
+    private void ResetSpeed()
+    {
+        _currentSpeed = 5;
     }
 }

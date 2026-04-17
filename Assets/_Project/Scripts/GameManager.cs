@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     
     [Header("Managers References"), Space(10)]
     [SerializeField] private UiManager _uiManager;
+    [SerializeField] private SpawnPipeManager _pipeManager;
     
     [Header("Gameplay Data")]
     [SerializeField ]private int _score;
@@ -37,5 +38,10 @@ public class GameManager : MonoBehaviour
     {
         _uiManager.DisplayGameOverMenu();
         Time.timeScale = 0.25f;
+    }
+
+    public void StartDash()
+    {
+        _pipeManager.SetCurrentSpeed(15);
     }
 }

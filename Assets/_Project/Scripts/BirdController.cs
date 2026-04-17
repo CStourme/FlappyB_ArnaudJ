@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,13 +5,17 @@ public class BirdController : MonoBehaviour
 {
     private Rigidbody2D _rigidbody2D;
     private Animator _animator;
-    [Header("Bird Settings"), Space(10)]
-    public float jumpForce = 0;
     private Camera _camera;
+    private TargetJoint2D _targetJoint;
+    
+    [Header("Bird Settings"), Space(10)]
+    public float jumpForce = 8;
+    public float accelForce = 15;
     
     // Référence au script "GameManager" qui gère les règles globales du jeu.
     // [HideInInspector] signifie qu'on ne le voit pas dans l'Unity Inspector, car il sera modifié par un autre script.
     [HideInInspector] public GameManager m_manager;
+    
     [SerializeField] private bool isDead;
     
     // Création d'une variable pour stocker l'état actuel
@@ -26,7 +29,7 @@ public class BirdController : MonoBehaviour
         _camera = Camera.main;
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        if (_rigidbody2D == null) Debug.LogError("BirdController: No Rigidbody2D found!");
+        _targetJoint = GetComponent<TargetJoint2D>();
     }
 
 
@@ -35,6 +38,7 @@ public class BirdController : MonoBehaviour
         // On ne fait rien si on n'est pas en train de jouer
         if (currentState == GameState.Playing)
         {
+            
             // Si j'appuie sur barre d'espace, le joueur saute.
             HandleInput();
 
@@ -84,7 +88,7 @@ public class BirdController : MonoBehaviour
 
     private void HandleInput()
     {
-        // Si on clique sur spaceKey :
+        // Saut avec la touche "spaceKey" :
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             // On applique la force de saut
@@ -92,8 +96,13 @@ public class BirdController : MonoBehaviour
             // On déclenche l'animation via le trigger : "FlyTrigger"
             _animator.SetTrigger("FlyTrigger");
         }
-    }
 
+        if (Keyboard.current.rightArrowKey.wasPressedThisFrame)
+        {
+            m_manager.StartDash();
+        }
+    }
+    
     private void OnCollisionEnter2D(Collision2D other)
     {
         // Dès qu'on touche un obstacle, on délègue la gestion de la fin de partie au manager.
