@@ -1048,11 +1048,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9522ec223af46604492db6f4cfce3761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnPipeManager
-  _repeatRate: 2
-  _variation: 1
+  _repeatRate: 1.5
+  _variation: 2
   _Up: 3
   _Down: -3
+  _normalSpeed: 5
   _currentSpeed: 5
+  _dashDuration: 0.1
+  _lerpReturnDuration: 0.5
 --- !u!114 &1999917655
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [Header("Managers References"), Space(10)]
     [SerializeField] private UiManager _uiManager;
     [SerializeField] private SpawnPipeManager _pipeManager;
+    private BirdController _birdscale;
     
     [Header("Gameplay Data")]
     [SerializeField ]private int _score;
@@ -31,7 +32,9 @@ public class GameManager : MonoBehaviour
     {
         _background = Instantiate(_backgroundPrefab);
         _bird = Instantiate(_playerPrefab, _playerSpawnPosition.position, Quaternion.identity);
-        _bird.GetComponent<BirdController>().m_manager =this;
+        // On récupère le script de l'oiseau qu'on vient de créer
+        _birdscale = _bird.GetComponent<BirdController>();
+        _birdscale.m_manager = this;
     }
     
     public void GameOver()
@@ -42,6 +45,7 @@ public class GameManager : MonoBehaviour
 
     public void StartDash()
     {
+        _birdscale.ApplyDashScale();
         _pipeManager.SetCurrentSpeed(15);
     }
 }

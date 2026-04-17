@@ -1,12 +1,14 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class BirdController : MonoBehaviour
 {
     private Rigidbody2D _rigidbody2D;
     private Animator _animator;
     private Camera _camera;
-    private TargetJoint2D _targetJoint;
+    private Transform _birdscale;
     
     [Header("Bird Settings"), Space(10)]
     public float jumpForce = 8;
@@ -22,14 +24,16 @@ public class BirdController : MonoBehaviour
     public enum GameState { Playing, GameOver }
     // On commence en "Playing"
     private GameState currentState = GameState.Playing;
-    
+    [SerializeField] private ParticleSystem _birdDashParticles;
+
 
     void Start()
     {
         _camera = Camera.main;
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        _targetJoint = GetComponent<TargetJoint2D>();
+        _birdscale = GetComponent<Transform>();
+        _birdDashParticles = GetComponentInChildren<ParticleSystem>();
     }
 
 
@@ -101,6 +105,50 @@ public class BirdController : MonoBehaviour
         {
             m_manager.StartDash();
         }
+    }
+    
+    public void ApplyDashScale()
+    {
+        // On lance la Coroutine pour gérer l'animation de déformation
+        StartCoroutine(DashScaleRoutine());
+    }
+    
+    public void ActiveDashParticles()
+    {
+        //_birdDashParticles.SetActive(true);
+    }
+
+    private IEnumerator DashScaleRoutine()
+    {
+        // On déforme l'oiseau (plus long en X, plus fin en Y)
+        transform.localScale = new Vector3(1.3f, 0.85f, 1f);
+
+        // On garde cette déformation pendant une courte durée (le temps du boost)
+        yield return new WaitForSeconds(0.2f);
+
+        // RETOUR À LA NORMALE PROGRESSIF (Lerp)
+        float elapsed = 0;
+        float duration = 0.5f; // Le retour à la forme initiale dure 0.5 secondes
+        Vector3 stretchedScale = transform.localScale;
+        Vector3 normalScale = Vector3.one; // C'est-à-dire (1, 1, 1)
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            
+            // On calcule le pourcentage d'avancement du retour
+            float t = elapsed / duration;
+            
+            // Lissage de la transition pour un effet plus organique
+            float smoothT = t * t * (3f - 2f * t);
+
+            // On fait glisser doucement la taille de "déformée" vers "normale"
+            transform.localScale = Vector3.Lerp(stretchedScale, normalScale, smoothT);
+            
+            yield return null; // Attendre l'image suivante
+        }
+        // On s'assure que l'oiseau termine exactement à sa taille d'origine
+        transform.localScale = Vector3.one;
     }
     
     private void OnCollisionEnter2D(Collision2D other)
